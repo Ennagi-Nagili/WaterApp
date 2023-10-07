@@ -18,6 +18,11 @@
         app:layout_constraintTop_toBottomOf="@+id/image"
         android:layout_marginTop="24dp"/>
 
-
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/lineChart"
+        app:layout_constraintTop_toBottomOf="@id/seek"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
