@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setCurrentFragment(InfoFragment())
+
         binding.bottom.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.info -> setCurrentFragment(InfoFragment())
