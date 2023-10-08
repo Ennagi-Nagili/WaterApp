@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.annaginagili.waterapp.activity.MainActivity
 import com.annaginagili.waterapp.databinding.FragmentLoginBinding
 import com.annaginagili.waterapp.databinding.FragmentSignupBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
 
@@ -35,14 +36,13 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val auth = FirebaseAuth.getInstance()
 
-        /*
-        if (auth.currentUser != null){
-            val intent = Intent(this@LoginActivity,MainActivity::class.java)
-            finish()
+        if (auth.currentUser != null) {
+            val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)
         }
-         */
+
 
 
         binding.signupRedirect.setOnClickListener {
@@ -59,15 +59,14 @@ class LoginFragment : Fragment() {
         val email = binding.userEmail
         val password = binding.userPassword
 
-
-        // Firebase Authentication should be added
-        /*
-
-
         binding.loginButton.setOnClickListener {
-            if (email.text.toString().isNullOrEmpty() || password.text.toString().isNullOrEmpty()){
-                Toast.makeText(this.requireContext(),"Email and password can not be empty!", Toast.LENGTH_LONG).show()
-            }else{
+            if (email.text.toString().isNullOrEmpty() || password.text.toString().isNullOrEmpty()) {
+                Toast.makeText(
+                    this.requireContext(),
+                    "Email and password can not be empty!",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
                 val auth = FirebaseAuth.getInstance()
                 auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener(this.requireActivity()) { task ->
@@ -77,14 +76,16 @@ class LoginFragment : Fragment() {
                             startActivity(intent)
 
                         } else {
-                            Toast.makeText(this.requireContext(),"User does not exist! Try again!", Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                this.requireContext(),
+                                "User does not exist! Try again!",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
             }
-
-         */
+        }
 
         return root
     }
-
 }

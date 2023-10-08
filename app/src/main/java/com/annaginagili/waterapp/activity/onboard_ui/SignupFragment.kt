@@ -27,15 +27,6 @@ class SignupFragment : Fragment() {
         _binding = FragmentSignupBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
-
-
-
-
-
-
-
-
         return root
     }
 
