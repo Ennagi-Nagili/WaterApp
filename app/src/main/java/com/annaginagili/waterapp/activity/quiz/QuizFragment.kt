@@ -21,10 +21,6 @@ class QuizFragment : Fragment() {
 
     private val quizzes = ArrayList<Quiz>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,12 +40,16 @@ class QuizFragment : Fragment() {
 
         binding.viewPager2.setPageTransformer(transformer)
 
-        val adapter = QuizAdapter(quizzes)
+        val adapter = QuizAdapter(quizzes,binding.viewPager2,requireContext())
         binding.viewPager2.adapter = adapter
 
         binding.viewPager2.offscreenPageLimit = 3
         binding.viewPager2.clipToPadding = false
         binding.viewPager2.clipChildren = false
+
+
+        binding.viewPager2.isUserInputEnabled = false
+
 
 
         return root
@@ -75,5 +75,27 @@ class QuizFragment : Fragment() {
         quizzes.add(Quiz(4,"Do You inspire someone to save on water consumption?",
             listOf("I encourage everyone the importance of water for present and future generations.","No,I don't care.")
         ))
+
+
+        quizzes.add(Quiz(5,"What contribution do you make to prevent the pollution of the water body?",
+            listOf("I physically participate in cleaning the water surface.","I throw my litter to water resources.","No, I don't do.")
+        ))
+
+        quizzes.add(Quiz(6,"Do you usually fix the tap leaks?",
+            listOf(" I immediately fix it.","Whenever I have time , I do.","No, I don't do.")
+        ))
+
+
+        quizzes.add(Quiz(7,"How do you use your washing machine?",
+            listOf("Only I use  when the washing machine are full loads.","I use even when I have a single dirty clothe")
+        ))
+
+
+        quizzes.add(Quiz(8,"What water source do you use to water plants?",
+            listOf("I collect rainwater for watering."," I use drinkable water for watering.")
+        ))
+
+
+
     }
 }
