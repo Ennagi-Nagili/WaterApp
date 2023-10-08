@@ -24,8 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Continue with"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -74,8 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login to your account"
-            android:textColor="#000000"
-            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textAlignment="center"/>
 
@@ -111,13 +112,15 @@
                 android:layout_height="wrap_content"
                 android:text="Email"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
 
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginTop="7dp"
-                android:src="@drawable/star" />
+                android:src="@drawable/star"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -144,7 +147,8 @@
                 android:layout_height="wrap_content"
                 android:text="Password"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
 
             <ImageView
                 android:layout_width="10dp"
@@ -169,6 +173,7 @@
 
 
         <CheckBox
+            android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="#0DC0DE"
@@ -180,13 +185,13 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/continue_button_back"
         android:text="Login"
-        android:textColor="#103C4A"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -194,15 +199,16 @@
 
 
     <TextView
+        android:id="@+id/signupRedirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don’t have an account? Sign up"
         android:textSize="20sp"
-        android:textColor="#103C4A"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
         android:layout_marginTop="10dp"/>
 
 
