@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1072223984982",
+    "project_id": "waterapp-cf1a1",
+    "storage_bucket": "waterapp-cf1a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072223984982:android:a0c57d02886d7b23fc0af7",
+        "android_client_info": {
+          "package_name": "com.annaginagili.waterapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYcdcQYvGc5pjWeLu_Pg9buMsaT82FR1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -22,14 +22,13 @@ class InfoFragment : Fragment() {
 
     private val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?): View {
 
         _binding = FragmentInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
         pager = binding.pager
 
         pager.adapter = PagerAdapter(requireContext())
-
 
         return root
     }
