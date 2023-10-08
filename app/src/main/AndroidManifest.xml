@@ -16,10 +16,10 @@
         android:theme="@style/Theme.WaterApp"
         tools:targetApi="31">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.OnboardActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.OnboardActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

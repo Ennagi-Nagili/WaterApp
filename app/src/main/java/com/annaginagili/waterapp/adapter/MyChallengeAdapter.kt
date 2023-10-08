@@ -3,12 +3,10 @@ package com.annaginagili.waterapp.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.annaginagili.waterapp.databinding.ChallengeLayoutBinding
-import com.annaginagili.waterapp.fragment.MyChallenges
 
-class MyChallengeAdapter(private val context: Context, private val itemList: List<String>):
+class MyChallengeAdapter(private val itemList: ArrayList<String>):
     RecyclerView.Adapter<MyChallengeAdapter.ItemHolder>() {
     class ItemHolder(private val binding: ChallengeLayoutBinding): RecyclerView.ViewHolder(binding.root) {
         fun setData(item: String) {
@@ -27,5 +25,10 @@ class MyChallengeAdapter(private val context: Context, private val itemList: Lis
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         holder.setData(itemList[position])
+    }
+
+    fun addData(data : String){
+        itemList.add(data)
+        notifyItemInserted(itemList.size)
     }
 }

@@ -2,6 +2,7 @@ package com.annaginagili.waterapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
@@ -16,9 +17,11 @@ import kotlin.math.floor
 
 class PagerAdapter(private val context: Context):
     RecyclerView.Adapter<PagerAdapter.ItemHolder>() {
+    private lateinit var listener: OnItemClickListener
+    private lateinit var listener2: OnItemClickListener
 
     class ItemHolder(private val binding: InfoPagerLayoutBinding): RecyclerView.ViewHolder(binding.root) {
-        fun setData(context: Context) {
+        fun setData(context: Context, listener: OnItemClickListener, listener2: OnItemClickListener) {
             val imageList1 = mutableListOf(R.drawable.a1955, R.drawable.a1956, R.drawable.a1957,
                 R.drawable.a1958, R.drawable.a1959, R.drawable.a1960, R.drawable.a1961, R.drawable.a1962,
                 R.drawable.a1963, R.drawable.a1964, R.drawable.a1965, R.drawable.a1966, R.drawable.a1967,
@@ -41,9 +44,11 @@ class PagerAdapter(private val context: Context):
 
             val imageList = if (adapterPosition == 0) {
                 binding.image.setBackgroundResource(R.drawable.a1955)
+                binding.back.visibility = View.INVISIBLE
                 imageList1
             } else {
                 binding.image.setBackgroundResource(R.drawable.b1)
+                binding.back.visibility = View.VISIBLE
                 imageList2
             }
 
@@ -72,9 +77,6 @@ class PagerAdapter(private val context: Context):
                     if (p1 != 100) {
                         val index = floor(count / 100 * p1).toInt()
                         binding.image.setImageResource(imageList[index])
-                        val pnt = HashMap<Float, Float>()
-
-                        createChart(pnt, label, context)
                     }
                 }
 
@@ -86,6 +88,14 @@ class PagerAdapter(private val context: Context):
 
                 }
             })
+
+            binding.next.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+
+            binding.back.setOnClickListener {
+                listener2.onItemClick(adapterPosition)
+            }
         }
 
         private fun createChart(points: HashMap<Float, Float>, label: String, context: Context) {
@@ -125,6 +135,18 @@ class PagerAdapter(private val context: Context):
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.setData(context)
+        holder.setData(context, listener, listener2)
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
+    fun setOnItemClickListener2(listener: OnItemClickListener) {
+        this.listener2 = listener
     }
 }
