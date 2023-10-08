@@ -1,7 +1,6 @@
-package com.annaginagili.waterapp.activity
+package com.annaginagili.waterapp.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.SeekBar
@@ -12,13 +11,7 @@ import com.annaginagili.waterapp.databinding.InfoPagerLayoutBinding
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.github.mikephil.charting.utils.EntryXComparator
-import java.util.Collections
 import kotlin.math.floor
 
 class PagerAdapter(private val context: Context):
@@ -26,23 +19,6 @@ class PagerAdapter(private val context: Context):
 
     class ItemHolder(private val binding: InfoPagerLayoutBinding): RecyclerView.ViewHolder(binding.root) {
         fun setData(context: Context) {
-            val points1 = mutableMapOf(Pair(1f, 1f), Pair(2f, 2f), Pair(3f, 3f), Pair(4f, 4f), Pair(5f, 5f),
-                Pair(6f, 6f), Pair(7f, 7f), Pair(8f, 8f), Pair(9f, 9f), Pair(10f, 10f), Pair(11f, 11f),
-                Pair(12f, 12f), Pair(13f, 13f), Pair(14f, 14f), Pair(15f, 15f), Pair(16f, 16f),
-                Pair(17f, 17f), Pair(18f, 18f), Pair(19f, 19f), Pair(20f, 20f), Pair(21f, 21f), Pair(22f, 22f), Pair(23f, 23f),
-                Pair(24f, 24f), Pair(25f, 25f), Pair(26f, 26f), Pair(27f, 27f), Pair(28f, 28f), Pair(29f, 29f), Pair(30f, 30f),
-                Pair(31f, 31f), Pair(32f, 32f), Pair(33f, 33f), Pair(34f, 34f), Pair(35f, 35f), Pair(36f, 36f), Pair(37f, 37f),
-                Pair(38f, 38f), Pair(39f, 39f), Pair(40f, 40f), Pair(41f, 41f), Pair(42f, 42f), Pair(43f, 43f), Pair(44f, 44f),
-                Pair(45f, 45f), Pair(46f, 46f), Pair(47f, 47f), Pair(48f, 48f), Pair(49f, 49f), Pair(50f, 50f), Pair(51f, 51f),
-                Pair(52f, 52f), Pair(53f, 53f), Pair(54f, 54f), Pair(55f, 55f), Pair(56f, 56f), Pair(57f, 57f), Pair(58f, 58f),
-                Pair(59f, 59f), Pair(60f, 60f), Pair(61f, 61f), Pair(62f, 62f))
-
-            val point = HashMap<Float, Float>()
-
-            for (i in 1..4) {
-                point[i.toFloat()] = i.toFloat()
-            }
-
             val imageList1 = mutableListOf(R.drawable.a1955, R.drawable.a1956, R.drawable.a1957,
                 R.drawable.a1958, R.drawable.a1959, R.drawable.a1960, R.drawable.a1961, R.drawable.a1962,
                 R.drawable.a1963, R.drawable.a1964, R.drawable.a1965, R.drawable.a1966, R.drawable.a1967,
@@ -83,6 +59,12 @@ class PagerAdapter(private val context: Context):
                 "Sea level"
             }
 
+            val point = HashMap<Float, Float>()
+
+            for (i in 1..count.toInt()) {
+                point[i.toFloat()] = i.toFloat()
+            }
+
             createChart(point, label, context)
 
             binding.seek.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
@@ -92,9 +74,6 @@ class PagerAdapter(private val context: Context):
                         binding.image.setImageResource(imageList[index])
                         val pnt = HashMap<Float, Float>()
 
-                        Log.e("hello", p1.toString())
-
-                        pnt[p1.toFloat()] = p1.toFloat()
                         createChart(pnt, label, context)
                     }
                 }
