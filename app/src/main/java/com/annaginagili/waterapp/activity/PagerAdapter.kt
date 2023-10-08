@@ -43,7 +43,7 @@ class PagerAdapter(private val context: Context):
             // Refresh the chart to display the data points
             binding.lineChart.invalidate()
 
-            val imageList = mutableListOf(R.drawable.a1955, R.drawable.a1956, R.drawable.a1957,
+            val imageList1 = mutableListOf(R.drawable.a1955, R.drawable.a1956, R.drawable.a1957,
                 R.drawable.a1958, R.drawable.a1959, R.drawable.a1960, R.drawable.a1961, R.drawable.a1962,
                 R.drawable.a1963, R.drawable.a1964, R.drawable.a1965, R.drawable.a1966, R.drawable.a1967,
                 R.drawable.a1968, R.drawable.a1969, R.drawable.a1970, R.drawable.a1971, R.drawable.a1972,
@@ -55,12 +55,32 @@ class PagerAdapter(private val context: Context):
                 R.drawable.a1998, R.drawable.a1999, R.drawable.a2000, R.drawable.a2001, R.drawable.a2002,
                 R.drawable.a2003, R.drawable.a2004, R.drawable.a2005, R.drawable.a2006, R.drawable.a2007,
                 R.drawable.a2008, R.drawable.a2009, R.drawable.a2010, R.drawable.a2011, R.drawable.a2012,
-                R.drawable.a2013, R.drawable.a2014, R.drawable.a2015, R.drawable.a2016,)
+                R.drawable.a2013, R.drawable.a2014, R.drawable.a2015, R.drawable.a2016)
+
+            val imageList2 = mutableListOf(R.drawable.b1, R.drawable.b2, R.drawable.b3, R.drawable.b4,
+                R.drawable.b5, R.drawable.b6, R.drawable.b7, R.drawable.b8, R.drawable.b9, R.drawable.b10,
+                R.drawable.b11, R.drawable.b12, R.drawable.b13, R.drawable.b14, R.drawable.b15, R.drawable.b16,
+                R.drawable.b17, R.drawable.b18, R.drawable.b19, R.drawable.b2, R.drawable.b21, R.drawable.b22,
+                R.drawable.b23, R.drawable.b24, R.drawable.b25, R.drawable.b26, R.drawable.b27, R.drawable.b28)
+
+            val imageList = if (adapterPosition == 0) {
+                binding.image.setBackgroundResource(R.drawable.a1955)
+                imageList1
+            } else {
+                binding.image.setBackgroundResource(R.drawable.b1)
+                imageList2
+            }
+
+            val count = if (adapterPosition == 0) {
+                62.0
+            } else {
+                28.0
+            }
 
             binding.seek.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
                 override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                     if (p1 != 100) {
-                        binding.image.setImageResource(imageList[floor(62.0 / 100 * p1).toInt()])
+                        binding.image.setImageResource(imageList[floor(count / 100 * p1).toInt()])
                     }
                 }
 
