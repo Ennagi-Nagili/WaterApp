@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.annaginagili.waterapp.databinding.FragmentSignupBinding
 
 class LoginFragment : Fragment() {
@@ -24,6 +25,11 @@ class LoginFragment : Fragment() {
     ): View? {
         _binding = FragmentSignupBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+        binding.appCompatButton.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToQuizFragment())
+        }
 
 
         return root

@@ -30,10 +30,13 @@ class SplashFragment : Fragment() {
         val root: View = binding.root
 
 
+
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
         }, 2000)
+
+
 
 
         return root
