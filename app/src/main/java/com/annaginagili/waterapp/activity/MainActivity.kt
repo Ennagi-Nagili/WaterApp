@@ -9,6 +9,8 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.fragment.app.Fragment
 import com.annaginagili.waterapp.R
 import com.annaginagili.waterapp.databinding.ActivityMainBinding
+import com.annaginagili.waterapp.fragment.ChallengeFragment
+import com.annaginagili.waterapp.fragment.HomeFragment
 import com.annaginagili.waterapp.fragment.InfoFragment
 import kotlin.math.floor
 
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         binding.bottom.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.info -> setCurrentFragment(InfoFragment())
+                R.id.home -> setCurrentFragment(HomeFragment())
+                R.id.contribution -> setCurrentFragment(ChallengeFragment())
             }
 
             true
