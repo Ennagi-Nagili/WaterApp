@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/findChallenge">
+
+    <fragment
+        android:id="@+id/findChallenge"
+        android:name="com.annaginagili.waterapp.fragment.findChallenges.FindChallenge"
+        android:label="fragment_find_challenge"
+        tools:layout="@layout/fragment_find_challenge" >
+        <action
+            android:id="@+id/action_findChallenge_to_myChallenges"
+            app:destination="@id/myChallenges" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChallenges"
+        android:name="com.annaginagili.waterapp.fragment.myChallenges.MyChallenges"
+        android:label="fragment_my_challenges"
+        tools:layout="@layout/fragment_my_challenges" />
+</navigation>

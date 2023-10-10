@@ -2,21 +2,18 @@ package com.annaginagili.waterapp.activity.onboard_ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.annaginagili.waterapp.activity.MainActivity
 import com.annaginagili.waterapp.databinding.FragmentLoginBinding
-import com.annaginagili.waterapp.databinding.FragmentSignupBinding
 import com.google.firebase.auth.FirebaseAuth
+import java.util.Calendar
 
 class LoginFragment : Fragment() {
 
@@ -38,23 +35,10 @@ class LoginFragment : Fragment() {
 
         val auth = FirebaseAuth.getInstance()
 
-        if (auth.currentUser != null) {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
         binding.signupRedirect.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
             findNavController().navigate(action)
         }
-
-        // Temporary, after testing this block should be deleted
-        binding.loginButton.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToQuizFragment())
-        }
-
 
         val email = binding.userEmail
         val password = binding.userPassword
@@ -67,14 +51,19 @@ class LoginFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                val auth = FirebaseAuth.getInstance()
                 auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener(this.requireActivity()) { task ->
                         if (task.isSuccessful) {
+                            val preferences = requireContext().getSharedPreferences("WaterApp",
+                                AppCompatActivity.MODE_PRIVATE)
 
-                            val intent = Intent(this.requireContext(), MainActivity::class.java)
-                            startActivity(intent)
-
+                            val day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+                            if (preferences.getInt("lastSign", 8) > day) {
+                                findNavController().navigate(LoginFragmentDirections
+                                    .actionLoginFragmentToQuizFragment())
+                            } else {
+                                startActivity(Intent(requireActivity(), MainActivity::class.java))
+                            }
                         } else {
                             Toast.makeText(
                                 this.requireContext(),

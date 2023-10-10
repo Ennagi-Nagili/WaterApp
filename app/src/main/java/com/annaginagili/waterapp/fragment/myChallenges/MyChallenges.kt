@@ -1,10 +1,12 @@
 package com.annaginagili.waterapp.fragment.myChallenges
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +22,6 @@ class MyChallenges : Fragment() {
     lateinit var binding: FragmentMyChallengesBinding
     lateinit var recycler: RecyclerView
     lateinit var viewModel: MyChallengesViewModel
-    var adapter = MyChallengeAdapter(arrayListOf())
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
@@ -37,12 +38,6 @@ class MyChallenges : Fragment() {
             viewModel.getChallenges(db.taskDao())
         }
 
-//        CoroutineScope(Dispatchers.Default).launch {
-//            val db = Room.databaseBuilder(requireContext(), AppDatabase::class.java, "Task")
-//                .build()
-//            db.taskDao().deleteAll()
-//        }
-
         setObserver()
 
         return binding.root
@@ -50,14 +45,44 @@ class MyChallenges : Fragment() {
 
     private fun setObserver() {
         viewModel.observeChallenges().observe(viewLifecycleOwner) {
-            val challengeList = ArrayList<String>()
+            val taskList = ArrayList<ArrayList<String>>()
+            val taskList1 = mutableListOf("Save water", "Inform someone about water shortage",
+                "Clean a water basin")
+            val taskList2 = mutableListOf("Inform someone about water shortage", "Clean a water basin",
+                "Save water")
+            val taskList3 = mutableListOf("Clean a water basin", "Inform someone about water shortage",
+                "Save water")
 
-            for (i in it) {
-                challengeList.add(i.text)
+            var count = 1
+
+            for (i in it.indices) {
+                when (count) {
+                    1 -> {
+                        taskList.add(taskList1 as ArrayList<String>)
+                        count ++
+                    }
+                    2 -> {
+                        taskList.add(taskList2 as ArrayList<String>)
+                        count ++
+                    }
+                    else -> {
+                        taskList.add(taskList3 as ArrayList<String>)
+                        count = 1
+                    }
+                }
             }
 
-            adapter = MyChallengeAdapter(challengeList)
+            val adapter = MyChallengeAdapter(requireContext(), it, taskList)
             recycler.adapter = adapter
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        CoroutineScope(Dispatchers.Default).launch {
+            val db = Room.databaseBuilder(requireContext(), AppDatabase::class.java, "Task")
+                .build()
+            viewModel.getChallenges(db.taskDao())
         }
     }
 }

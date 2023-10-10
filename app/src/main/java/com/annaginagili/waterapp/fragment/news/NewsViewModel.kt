@@ -1,4 +1,4 @@
-package com.annaginagili.waterapp.fragment.myChallenges
+package com.annaginagili.waterapp.fragment.news
 
 import android.content.Context
 import android.widget.Toast

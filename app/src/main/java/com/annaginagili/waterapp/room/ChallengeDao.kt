@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.annaginagili.waterapp.model.Challenge
 
 @Dao
@@ -19,4 +20,7 @@ interface ChallengeDao {
 
     @Query("Delete from Challenge")
     fun deleteAll()
+
+    @Update
+    fun edit(challenge: Challenge)
 }

@@ -5,12 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -18,6 +20,7 @@ import com.annaginagili.waterapp.R
 import com.annaginagili.waterapp.activity.MainActivity
 import com.annaginagili.waterapp.activity.onboard_ui.SplashFragmentDirections
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.Calendar
 
 class QuizAdapter(private val quizzes:ArrayList<Quiz>,private val viewPager2: ViewPager2,private val context:Context)
     : RecyclerView.Adapter<QuizAdapter.CardViewHolder>(){
@@ -79,6 +82,8 @@ class QuizAdapter(private val quizzes:ArrayList<Quiz>,private val viewPager2: Vi
                     context.startActivity(intent)
                 }, 1000)
             }
+
+            setSign(position, quizzes, context)
         }
 
         holder.answer2.setOnCheckedChangeListener { _, _ ->
@@ -98,6 +103,8 @@ class QuizAdapter(private val quizzes:ArrayList<Quiz>,private val viewPager2: Vi
                     context.startActivity(intent)
                 }, 1000)
             }
+
+            setSign(position, quizzes, context)
         }
 
         holder.answer3.setOnCheckedChangeListener { _, _ ->
@@ -117,6 +124,24 @@ class QuizAdapter(private val quizzes:ArrayList<Quiz>,private val viewPager2: Vi
                     val intent = Intent(context,MainActivity::class.java)
                     context.startActivity(intent)
                 }, 1000)
+            }
+            setSign(position, quizzes, context)
+        }
+    }
+
+    private fun setSign(position: Int, list: List<Quiz>, context: Context) {
+        Log.e("hello", position.toString() + "aa")
+        if (position == list.size - 1) {
+            val preferences = context.getSharedPreferences(
+                "WaterApp",
+                AppCompatActivity.MODE_PRIVATE
+            )
+
+            val day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+            if (day == 1) {
+                preferences.edit().putInt("lastSign", 7).apply()
+            } else {
+                preferences.edit().putInt("lastSign", day - 1).apply()
             }
         }
     }

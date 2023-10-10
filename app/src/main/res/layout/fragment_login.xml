@@ -135,7 +135,7 @@
                 android:background="@drawable/edit_background"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:text="Enter your Email ID"
+                android:hint="Enter your Email ID"
                 android:textColor="#4D000000"
                 android:textSize="20sp" />
 
@@ -171,7 +171,7 @@
                 android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:text="Enter a Password"
+                android:hint="Enter a Password"
                 android:textColor="#4D000000"
                 android:textSize="20sp" />
 

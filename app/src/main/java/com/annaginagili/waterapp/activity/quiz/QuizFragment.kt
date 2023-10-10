@@ -94,8 +94,5 @@ class QuizFragment : Fragment() {
         quizzes.add(Quiz(8,"What water source do you use to water plants?",
             listOf("I collect rainwater for watering."," I use drinkable water for watering.")
         ))
-
-
-
     }
 }

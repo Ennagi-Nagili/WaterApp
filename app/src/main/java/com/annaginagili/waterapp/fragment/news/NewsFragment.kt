@@ -1,4 +1,4 @@
-package com.annaginagili.waterapp.fragment
+package com.annaginagili.waterapp.fragment.news
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.annaginagili.waterapp.R
 import com.annaginagili.waterapp.adapter.NewsAdapter
 import com.annaginagili.waterapp.databinding.FragmentNewsBinding
-import com.annaginagili.waterapp.fragment.myChallenges.NewsViewModel
 
 class NewsFragment : Fragment() {
 

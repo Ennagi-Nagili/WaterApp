@@ -10,7 +10,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.annaginagili.waterapp.R
 import com.annaginagili.waterapp.adapter.ChallengeAdapter
 import com.annaginagili.waterapp.databinding.FragmentChallengeBinding
+import com.annaginagili.waterapp.fragment.myChallenges.MyChallenges
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ChallengeFragment : Fragment() {

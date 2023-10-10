@@ -70,7 +70,13 @@ class PagerAdapter(private val context: Context):
                 point[i.toFloat()] = i.toFloat()
             }
 
-            createChart(point, label, context)
+            val color = if (adapterPosition == 0) {
+                R.color.red
+            } else {
+                R.color.blue
+            }
+
+            createChart(point, label, context, color)
 
             binding.seek.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
                 override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
@@ -98,7 +104,7 @@ class PagerAdapter(private val context: Context):
             }
         }
 
-        private fun createChart(points: HashMap<Float, Float>, label: String, context: Context) {
+        private fun createChart(points: HashMap<Float, Float>, label: String, context: Context, color: Int) {
             val entries:ArrayList<BarEntry> = ArrayList()
 
             for (i in points) {
@@ -106,7 +112,7 @@ class PagerAdapter(private val context: Context):
             }
 
             val barDataSet = BarDataSet(entries, label)
-            barDataSet.color = context.resources.getColor(R.color.blue)
+            barDataSet.color = context.resources.getColor(color)
             barDataSet.valueTextColor = context.resources.getColor(R.color.black)
 
             val dataSets: ArrayList<IBarDataSet> = ArrayList()

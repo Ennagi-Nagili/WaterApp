@@ -24,6 +24,32 @@
             android:paddingVertical="8dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/duration"
+                android:fontFamily="@font/lexend_medium"
+                android:text="Duration: 7 days"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/point"
+                android:fontFamily="@font/lexend_medium"
+                android:text="Points: +10"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
                 android:id="@+id/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,7 +59,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/duration"
+                android:fontFamily="@font/lexend_medium"/>
 
             <ImageView
                 android:id="@+id/add"

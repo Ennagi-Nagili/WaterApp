@@ -31,7 +31,7 @@ class NewsAdapter(var articles: MutableList<Article>) : RecyclerView.Adapter<New
         val article = articles[position]
         holder.article_title.text = article.title
         holder.article_description.text = article.description
-        Picasso.get().load(article.imageUrl).into(holder.article_image)
+        Picasso.get().load(article.urlToImage).into(holder.article_image)
     }
 
     fun addData(newArticles: List<Article>) {
