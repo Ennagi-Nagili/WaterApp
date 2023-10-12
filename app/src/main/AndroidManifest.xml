@@ -31,6 +31,10 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.waterapp-cf1a1"
+            android:value="ca-app-pub-2418100705684593~5206802097" />
     </application>
 
 </manifest>

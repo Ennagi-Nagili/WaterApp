@@ -49,6 +49,14 @@
 
         </androidx.cardview.widget.CardView>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/banner"
+            android:background="@drawable/banner"
+            app:layout_constraintTop_toBottomOf="@id/cardViwe3"
+            android:layout_marginTop="24dp"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViwe1"
             android:layout_width="match_parent"
@@ -61,7 +69,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViwe3">
+            app:layout_constraintTop_toBottomOf="@+id/banner">
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
